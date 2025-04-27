@@ -55,16 +55,22 @@ class CVModel(BaseModel):
 
 # 🔧 Prompt per estrazione dati CV
 PROMPT_TEMPLATE = """
-Estrai le informazioni rilevanti dal seguente testo del CV e formattale esattamente secondo la struttura JSON qui sotto.
+Estrai le informazioni rilevanti dal seguente testo del CV e formattale esattamente secondo la struttura JSON richiesta.
 
 – Utilizza i nomi dei campi **esattamente** come mostrato nel template.  
 – Se alcuni campi sono assenti nel CV, lasciali come stringhe vuote "" o array vuoti [].  
-– Per le sezioni 'Educazione' ed 'Esperienza', includi **tutti gli entry** presenti nel CV (non solo uno).  
-– Non tradurre i valori trovati nel CV e non cambiare la loro formattazione originale.
-– Se nel CV sono presenti formattazioni particolari come paragrafi o elenchi puntati, conservale nel formato JSON.
+– Per le sezioni 'Istruzione' ed 'Esperienze', includi **tutti gli entry** presenti nel CV (non solo uno).  
+– Non tradurre o modificare i valori trovati nel CV.
+
 
 Si prega di formattare il risultato come JSON, con questi campi specifici:
+- **Nome** (stringa)
+- **Cognome** (stringa)
 - **Posizione** (stringa)
+- **Telefono** (stringa)
+- **Email** (stringa)
+- **Sito** (stringa)
+- **Città** (stringa)
 - **Obiettivo** (stringa)
 - **Competenze** (lista di stringhe)
 - **Lingue** (lista di stringhe)
