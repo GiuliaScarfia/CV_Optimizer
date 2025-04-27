@@ -5,7 +5,7 @@ Kaggle.drop(l) - Final project - Edgemony Coding AI Bootcamp
 - Prerequisiti:
 1. Prima di lanciare il progetto bisogna installare tutti i pacchetti specificati nel file "requirements.txt" anche con un unico comando: pip install -r requirements.txt
 2. La versione di python utilizzata è python 3.11
-3. Utilizzare una chiave API per Gemini creata tramite AI Studio e salvata in un file con estensione .env in cui sia scritto API_KEY="nome_chiave_API"
+3. Utilizzare una chiave API per Gemini creata tramite AI Studio e salvata in un file chiamatao "api.env" in cui sia scritto API_KEY="nome_chiave_API"
 
 Il progetto è così strutturato:
 - Il file da lanciare per vedere la web app è "app.py"
