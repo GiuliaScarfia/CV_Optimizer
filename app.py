@@ -84,7 +84,8 @@ if page == "team":
             """,
             unsafe_allow_html=True
         )
-        
+    
+    st.image("assets/Immagine_CV_gruppo.jpeg")  # Mostra l'immagine del team
     st.subheader("Conosci chi ha creato CV Optimizer!")
 
     team_members = [
