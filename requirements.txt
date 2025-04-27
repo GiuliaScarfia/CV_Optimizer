@@ -6,6 +6,6 @@ langchain_google_genai
 pydantic
 langchain
 beautifulsoup4
-google.generativeai
+google-generativeai
 regex
 requests
