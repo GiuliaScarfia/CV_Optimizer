@@ -1,0 +1,11 @@
+streamlit
+pdfplumber
+dotenv
+python-docx
+langchain_google_genai
+pydantic
+langchain
+beautifulsoup4
+google.generativeai
+regex
+requests
