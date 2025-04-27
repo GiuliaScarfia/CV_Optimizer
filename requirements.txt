@@ -1,6 +1,6 @@
 streamlit
 pdfplumber
-dotenv
+python-dotenv
 python-docx
 langchain_google_genai
 pydantic
