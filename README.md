@@ -1,4 +1,4 @@
-# _CV_Agent_
+# CV_Optimizer
 Kaggle.drop(l) - Final project - Edgemony Coding AI Bootcamp
 
 
