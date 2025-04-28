@@ -220,4 +220,4 @@ with col2:
                 else:
                     st.error(format)
     else:
-        st.warning("⚠️ Analizza il CV prima di ottimizzarlo.")
+        st.warning("⚠️ Verifica compatibilità tra CV e annunncio di lavoro prima di ottimizzarlo.")
