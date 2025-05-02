@@ -33,22 +33,23 @@ if page == "home":
     st.markdown(f"""
         <style>
             .hover-button {{
+                display: inline-block;
                 border: none;
                 background: transparent;
                 padding: 0;
-            }}
-            .hover-button img {{
                 transition: transform 0.3s ease;
             }}
-            .hover-button img:hover {{
-                transform: scale(1.15);
+            .hover-button img {{
+                width: 230px;
+                transition: transform 0.3s ease;
+            }}
+            .hover-button:hover img {{
+                transform: scale(1.1);
                 cursor: pointer;
             }}
         </style>
         <a href="?page=team" class="hover-button" title="Scopri chi siamo!">
-            <button class="hover-button">
-                <img src="data:image/png;base64,{img_base64}" width="230" />
-            </button>
+            <img src="data:image/png;base64,{img_base64}" alt="Logo" />
         </a>
     """, unsafe_allow_html=True)
 
