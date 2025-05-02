@@ -12,37 +12,38 @@ from utils.cv_parser import read_pdf
 from utils.job_parser import input_job_description
 from utils.gemini_matcher import get_matching_score
 
-# Caricare l'immagine e convertirla in base64
-image_path = "assets/transparent_logo.png"
+#Impostazione colore dello spinner
+st.markdown("""
+    <style>
+        .stSpinner > div > div {
+            color: salmon !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
+# Caricare l'immagine locale
+image_path = "assets/transparent_logo.png"  # <-- il tuo file immagine
+
+# Funzione per convertire l'immagine in base64
 def get_base64_of_bin_file(file_path):
     with open(file_path, 'rb') as f:
         data = f.read()
     return base64.b64encode(data).decode()
 
+# Ottieni l'immagine codificata in base64
 img_base64 = get_base64_of_bin_file(image_path)
 
-# Verifica la pagina
+# Leggi la query string per sapere su che pagina sei
 query_params = st.query_params
 page = query_params.get("page", "home")
 
+# Mostrare il logo cliccabile che cambia pagina interna
 if page == "home":
-    st.markdown(f"""
-        <style>
-            .logo-container {{
-                display: inline-block;
-                transition: all 0.3s ease-in-out;
-            }}
-            .logo-container:hover {{
-                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
-                transform: scale(1.05);
-                cursor: pointer;
-            }}
-        </style>
-        <a href="?page=team" class="logo-container" title="Scopri chi siamo!">
+    st.markdown(f'''
+        <a href="?page=team">
             <img src="data:image/png;base64,{img_base64}" width="230" />
         </a>
-    """, unsafe_allow_html=True)
+    ''', unsafe_allow_html=True)
 
 # Funzione per impostare sfondo + migliorare leggibilità
 def set_background(image_path):
