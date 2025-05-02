@@ -12,46 +12,42 @@ from utils.cv_parser import read_pdf
 from utils.job_parser import input_job_description
 from utils.gemini_matcher import get_matching_score
 
-# Caricare l'immagine locale
-image_path = "assets/transparent_logo.png"  # <-- il tuo file immagine
+# Caricare l'immagine e convertirla in base64
+image_path = "assets/transparent_logo.png"
 
-# Funzione per convertire l'immagine in base64
 def get_base64_of_bin_file(file_path):
     with open(file_path, 'rb') as f:
         data = f.read()
     return base64.b64encode(data).decode()
 
-# Ottieni l'immagine codificata in base64
 img_base64 = get_base64_of_bin_file(image_path)
 
-# Leggi la query string per sapere su che pagina sei
+# Verifica la pagina
 query_params = st.query_params
 page = query_params.get("page", "home")
 
-# HTML e CSS per l'effetto hover e il logo cliccabile
 if page == "home":
-    st.markdown(f"""
+    st.components.v1.html(f"""
+        <html>
+        <head>
         <style>
-            .hover-button {{
+            .logo-link {{
                 display: inline-block;
-                border: none;
-                background: transparent;
-                padding: 0;
                 transition: transform 0.3s ease;
             }}
-            .hover-button img {{
-                width: 230px;
-                transition: transform 0.3s ease;
-            }}
-            .hover-button:hover img {{
-                transform: scale(1.1);
+            .logo-link:hover {{
+                transform: scale(1.15);
                 cursor: pointer;
             }}
         </style>
-        <a href="?page=team" class="hover-button" title="Scopri chi siamo!">
-            <img src="data:image/png;base64,{img_base64}" alt="Logo" />
-        </a>
-    """, unsafe_allow_html=True)
+        </head>
+        <body>
+            <a href="?page=team" class="logo-link" title="Scopri chi siamo!">
+                <img src="data:image/png;base64,{img_base64}" width="230"/>
+            </a>
+        </body>
+        </html>
+    """, height=300)
 
 # Funzione per impostare sfondo + migliorare leggibilità
 def set_background(image_path):
