@@ -8,12 +8,15 @@ def modify_template(dati_cv):
     # Carica il template
     # Seleziona il template corretto in base al numero di esperienze
     num_experience = len(dati_cv["esperienze"])
+
+    base_dir = os.path.dirname(os.path.abspath(__file__))  # Ottieni il percorso assoluto del file
+
     if num_experience == 1:
-        template_path = "data\\template_curriculum_1.docx"
+        template_path = os.path.join(base_dir, 'data', 'template_curriculum_1.docx')
     elif num_experience == 2:
-        template_path = "data\\template_curriculum_2.docx"
+        template_path = os.path.join(base_dir, 'data', 'template_curriculum_2.docx')
     elif num_experience >= 3:
-        template_path = "data\\template_curriculum_3.docx"
+        template_path = os.path.join(base_dir, 'data', 'template_curriculum_3.docx')
     else:
         logging.error("Errore: Numero di esperienze non supportato. Supportati solo 1, 2 o 3 esperienze.")
         exit(1)
