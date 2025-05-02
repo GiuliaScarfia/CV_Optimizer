@@ -1,6 +1,7 @@
 from docx import Document
 import logging
 from io import BytesIO
+import os
 
 
 # Funzione per modificare il template Word
