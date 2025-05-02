@@ -119,7 +119,7 @@ if page == "team":
 
 # Carica variabili d’ambiente
 load_dotenv("api.env")
-api_key = os.getenv("API_KEY")
+api_key = st.secrets["API_KEY"]
 
 # Verifica che la chiave API sia presente
 if api_key is None:
