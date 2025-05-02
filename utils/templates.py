@@ -1,28 +1,28 @@
+import os
 from docx import Document
 import logging
 from io import BytesIO
-import os
 
 
 # Funzione per modificare il template Word
 def modify_template(dati_cv):
-    # Carica il template
-    # Seleziona il template corretto in base al numero di esperienze
     num_experience = len(dati_cv["esperienze"])
 
-    base_dir = os.path.dirname(os.path.abspath(__file__))  # Ottieni il percorso assoluto del file
+    base_dir = os.path.dirname(os.path.abspath(__file__))  # path di utils/
+    data_dir = os.path.abspath(os.path.join(base_dir, '..', 'data'))  # path assoluto della cartella data/
 
     if num_experience == 1:
-        template_path = os.path.join(base_dir, 'data', 'template_curriculum_1.docx')
+        template_path = os.path.join(data_dir, 'template_curriculum_1.docx')
     elif num_experience == 2:
-        template_path = os.path.join(base_dir, 'data', 'template_curriculum_2.docx')
+        template_path = os.path.join(data_dir, 'template_curriculum_2.docx')
     elif num_experience >= 3:
-        template_path = os.path.join(base_dir, 'data', 'template_curriculum_3.docx')
+        template_path = os.path.join(data_dir, 'template_curriculum_3.docx')
     else:
-        logging.error("Errore: Numero di esperienze non supportato. Supportati solo 1, 2 o 3 esperienze.")
+        logging.error("Errore: Numero di esperienze non supportato.")
         exit(1)
 
     doc = Document(template_path)
+    return doc
 
     # Dizionario dei segnaposto e dei valori da sostituire
     label_values = {
