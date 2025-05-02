@@ -28,24 +28,29 @@ img_base64 = get_base64_of_bin_file(image_path)
 query_params = st.query_params
 page = query_params.get("page", "home")
 
-# Mostrare il logo cliccabile che cambia pagina interna
+# HTML e CSS per l'effetto hover e il logo cliccabile
 if page == "home":
-    st.markdown(
-        f"""
+    st.markdown("""
         <style>
-            .custom-logo {{
-                transition: transform 0.3s ease !important;
-            }}
-            .custom-logo:hover {{
-                transform: scale(1.15) !important;
-            }}
+            .hover-button {
+                border: none;
+                background: transparent;
+                padding: 0;
+            }
+            .hover-button img {
+                transition: transform 0.3s ease;
+            }
+            .hover-button img:hover {
+                transform: scale(1.15);
+                cursor: pointer;
+            }
         </style>
-        <a href="?page=team" title="Scopri chi siamo!">
-            <img src="data:image/png;base64,{img_base64}" width="230" class="custom-logo"/>
+        <a href="?page=team" class="hover-button" title="Scopri chi siamo!">
+            <button class="hover-button">
+                <img src="data:image/png;base64,{img_base64}" width="230" />
+            </button>
         </a>
-        """,
-        unsafe_allow_html=True
-    )
+    """, unsafe_allow_html=True)
 
 # Funzione per impostare sfondo + migliorare leggibilità
 def set_background(image_path):
