@@ -30,20 +30,20 @@ page = query_params.get("page", "home")
 
 # HTML e CSS per l'effetto hover e il logo cliccabile
 if page == "home":
-    st.markdown("""
+    st.markdown(f"""
         <style>
-            .hover-button {
+            .hover-button {{
                 border: none;
                 background: transparent;
                 padding: 0;
-            }
-            .hover-button img {
+            }}
+            .hover-button img {{
                 transition: transform 0.3s ease;
-            }
-            .hover-button img:hover {
+            }}
+            .hover-button img:hover {{
                 transform: scale(1.15);
                 cursor: pointer;
-            }
+            }}
         </style>
         <a href="?page=team" class="hover-button" title="Scopri chi siamo!">
             <button class="hover-button">
