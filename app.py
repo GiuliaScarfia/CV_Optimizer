@@ -33,15 +33,15 @@ if page == "home":
     st.markdown(
         f"""
         <style>
-            .logo-hover {{
-                transition: transform 0.3s ease;
+            .custom-logo {{
+                transition: transform 0.3s ease !important;
             }}
-            .logo-hover:hover {{
-                transform: scale(1.1);
+            .custom-logo:hover {{
+                transform: scale(1.15) !important;
             }}
         </style>
         <a href="?page=team" title="Scopri chi siamo!">
-            <img src="data:image/png;base64,{img_base64}" width="230" class="logo-hover"/>
+            <img src="data:image/png;base64,{img_base64}" width="230" class="custom-logo"/>
         </a>
         """,
         unsafe_allow_html=True
