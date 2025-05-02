@@ -27,27 +27,22 @@ query_params = st.query_params
 page = query_params.get("page", "home")
 
 if page == "home":
-    st.components.v1.html(f"""
-        <html>
-        <head>
+    st.markdown(f"""
         <style>
-            .logo-link {{
+            .logo-container {{
                 display: inline-block;
-                transition: transform 0.3s ease;
+                transition: all 0.3s ease-in-out;
             }}
-            .logo-link:hover {{
-                transform: scale(1.15);
+            .logo-container:hover {{
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+                transform: scale(1.05);
                 cursor: pointer;
             }}
         </style>
-        </head>
-        <body>
-            <a href="?page=team" class="logo-link" title="Scopri chi siamo!">
-                <img src="data:image/png;base64,{img_base64}" width="230"/>
-            </a>
-        </body>
-        </html>
-    """, height=300)
+        <a href="?page=team" class="logo-container" title="Scopri chi siamo!">
+            <img src="data:image/png;base64,{img_base64}" width="230" />
+        </a>
+    """, unsafe_allow_html=True)
 
 # Funzione per impostare sfondo + migliorare leggibilità
 def set_background(image_path):
