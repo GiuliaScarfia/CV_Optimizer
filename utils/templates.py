@@ -22,7 +22,6 @@ def modify_template(dati_cv):
         exit(1)
 
     doc = Document(template_path)
-    return doc
 
     # Dizionario dei segnaposto e dei valori da sostituire
     label_values = {
