@@ -30,21 +30,22 @@ page = query_params.get("page", "home")
 
 # Mostrare il logo cliccabile che cambia pagina interna
 if page == "home":
-    st.markdown(f"""
+    st.markdown(
+        f"""
         <style>
-            .logo-container {{
-                display: inline-block;
+            .logo-hover {{
                 transition: transform 0.3s ease;
             }}
-            .logo-container:hover {{
+            .logo-hover:hover {{
                 transform: scale(1.1);
             }}
         </style>
-        <a href="?page=team" class="logo-container" title="Scopri chi siamo!">
-            <img src="data:image/png;base64,{img_base64}" width="230" />
+        <a href="?page=team" title="Scopri chi siamo!">
+            <img src="data:image/png;base64,{img_base64}" width="230" class="logo-hover"/>
         </a>
-    """, unsafe_allow_html=True)
-
+        """,
+        unsafe_allow_html=True
+    )
 
 # Funzione per impostare sfondo + migliorare leggibilità
 def set_background(image_path):
