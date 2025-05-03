@@ -37,11 +37,24 @@ img_base64 = get_base64_of_bin_file(image_path)
 query_params = st.query_params
 page = query_params.get("page", "home")
 
+# Stile CSS per l'effetto hover
+st.markdown("""
+    <style>
+    .logo-hover {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+    .logo-hover:hover {
+        transform: scale(1.05);
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 # Mostrare il logo cliccabile che cambia pagina interna
 if page == "home":
     st.markdown(f'''
-        <a href="?page=team">
-            <img src="data:image/png;base64,{img_base64}" width="230" />
+        <a href="?page=team" title="Clicca per conoscere il team!">
+            <img class="logo-hover" src="data:image/png;base64,{img_base64}" width="230" />
         </a>
     ''', unsafe_allow_html=True)
 
