@@ -46,19 +46,19 @@ def modify_template(dati_cv):
         else:
             education = {}  # or some default value
 
-        label_values[f"{{data_conseguimento_{i}}}"] = education["data_conseguimento"]
-        label_values[f"{{nome_istituto_{i}}}"] = education["nome_istituto"]
-        label_values[f"{{titolo_{i}}}"] = education["titolo"]
-        label_values[f"{{desc_titolo_{i}}}"] = education["desc_titolo"]
+        label_values[f"{{data_conseguimento_{i}}}"] = education.get("data_conseguimento", "")
+        label_values[f"{{nome_istituto_{i}}}"] = education.get("nome_istituto", "")
+        label_values[f"{{titolo_{i}}}"] = education.get("titolo", "")
+        label_values[f"{{desc_titolo_{i}}}"] = education.get("desc_titolo", "")
 
     # Aggiungi i segnaposto per le esperienze
     for i in range(1, 4):  # Supponendo 3 blocchi per le esperienze
         if i <= len(dati_cv["esperienze"]):
             experience = dati_cv["esperienze"][i - 1]
-            label_values[f"{{periodo_{i}}}"] = experience["periodo"]
-            label_values[f"{{qualifica_{i}}}"] = experience["qualifica"]
-            label_values[f"{{nome_società_{i}}}"] = experience["nome_società"]
-            label_values[f"{{desc_esperienza_{i}}}"] = experience["desc_esperienza"]
+            label_values[f"{{periodo_{i}}}"] = experience.get("periodo", "")
+            label_values[f"{{qualifica_{i}}}"] = experience.get("qualifica", "")
+            label_values[f"{{nome_società_{i}}}"] = experience.get("nome_società", "")
+            label_values[f"{{desc_esperienza_{i}}}"] = experience.get("desc_esperienza", "")
         else:
             label_values[f"{{periodo_{i}}}"] = ""
             label_values[f"{{qualifica_{i}}}"] = ""
