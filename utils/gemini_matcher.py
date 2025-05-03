@@ -2,17 +2,28 @@ import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 import logging
+import random
+
+import os
+from dotenv import load_dotenv
+import random
 
 # Carica variabili d'ambiente
-load_dotenv()
+load_dotenv("api.env")
 
-# Carica la chiave API da .env
-api_key = os.getenv("API_KEY")
+# Estrai tutte le chiavi che iniziano con API_KEY_
+api_keys = [v for k, v in os.environ.items() if k.startswith("API_KEY_")]
 
-if not api_key:
-    raise ValueError("API_KEY non trovata nel file .env")
+if not api_keys:
+    # Fallback alla chiave standard
+    api_key = os.getenv("API_KEY")
+    if not api_key:
+        raise ValueError("Nessuna chiave API trovata nel file .env")
+else:
+    api_key = random.choice(api_keys)
+    print(f"Chiave API selezionata: {api_key[:8]}...")  # solo per debug
 
-# Configura Gemini con la chiave API
+# Configura Gemini
 genai.configure(api_key=api_key)
 
 def get_matching_score(cv_text: str, job_description: str) -> float:

@@ -140,7 +140,10 @@ if page == "team":
 
 # Carica variabili d’ambiente
 load_dotenv("api.env")
-api_key = st.secrets["API_KEY"]
+api_keys = [v for k, v in st.secrets.items() if k.startswith("API_KEY_")]
+if not api_keys:
+    raise ValueError("Nessuna chiave API_KEY_X trovata nei secrets")
+api_key = random.choice(api_keys)
 
 # Verifica che la chiave API sia presente
 if api_key is None:
