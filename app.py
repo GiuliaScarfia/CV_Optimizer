@@ -41,11 +41,11 @@ page = query_params.get("page", "home")
 st.markdown("""
     <style>
     .logo-hover {
-        transition: transform 0.3s ease;
+        transition: transform 0.4s ease;
         cursor: pointer;
     }
     .logo-hover:hover {
-        transform: scale(1.05);
+        transform: scale(1.1);
     }
     </style>
 """, unsafe_allow_html=True)
